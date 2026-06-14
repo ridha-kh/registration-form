@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #060c1f;
+  --card: rgba(11, 18, 44, 0.55);
+  --card-border: rgba(255, 255, 255, 0.18);
+  --text: #eef2ff;
+  --muted: #b8c1d6;
+  --accent: #7c90ff;
+  --accent-light: #afc2ff;
+  --shadow: 0 20px 80px rgba(0, 0, 0, 0.32);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(
+      180deg,
+      rgba(5, 12, 30, 0.92),               
+      rgba(7, 11, 28, 0.92)
+    ),
+    url('background.jpg') center/cover no-repeat fixed;
+  color: var(--text);
+}
+
+section {
+  width: min(100%, 480px);
+  padding: 2.5rem 2rem;
+  border-radius: 28px;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.inputbox {
+  position: relative;
+  padding: 0.95rem 1rem 0.75rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.3s ease, border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.inputbox:hover {
+  transform: translateY(-1px);
+  border-color: rgba(124, 144, 255, 0.35);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.inputbox ion-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--accent-light);
+  pointer-events: none;
+}
+
+.inputbox input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  padding: 0.15rem 2.75rem 0 0;
+}
+
+.inputbox input::placeholder {
+  color: transparent;
+}
+
+.inputbox label {
+  position: absolute;
+  left: 1rem;
+  top: 1.05rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  pointer-events: none;
+  transition: transform 0.25s ease, font-size 0.25s ease,
+    color 0.25s ease;
+}
+
+.inputbox input:focus ~ label,
+.inputbox input:not(:placeholder-shown) ~ label {
+  transform: translateY(-1.45rem);
+  font-size: 0.8rem;
+  color: var(--accent-light);
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6b8dff, #4f6dff);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  box-shadow: 0 18px 40px rgba(79, 109, 255, 0.25);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.register {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.register a {
+  color: #aac2ff;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.register a:hover {
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+  }
+
+  section {
+    padding: 2rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.95rem;
+  }
+
+  .inputbox {
+    padding: 0.85rem 0.9rem;
+  }
+}
