@@ -2,6 +2,13 @@
 
    // ***DASHBOARD.JS***
 
+   // welcome message
+
+   const name = localStorage.getItem("name");
+
+document.getElementById("welcome").textContent =
+    `Welcome ${name}`;
+
 // Function to load students from the API and display them in a table
 async function loadStudents() {
 
@@ -12,18 +19,22 @@ async function loadStudents() {
         await response.json();
 
     let html = `
-        <h2>Students</h2>
+        <div class="table-container">
+            <h2>Students</h2>
 
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-            </tr>
+            <table class="glass-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+
+                <tbody>
     `;
 
     students.forEach(student => {
-
         html += `
             <tr>
                 <td>${student.id}</td>
@@ -33,11 +44,14 @@ async function loadStudents() {
         `;
     });
 
-    html += "</table>";
+    html += `
+                </tbody>
+            </table>
+        </div>
+    `;
 
     document.getElementById("content").innerHTML = html;
 }
-
 // Function to show the update form
 function showUpdateForm() {
 

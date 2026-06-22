@@ -92,15 +92,18 @@ public class StudentService {
     }
 
 
-    public String login( Student student) {
+    public Student login(Student student) {
 
-        Student dbStudent = studentrepository.findByEmail(student.getEmail());
+        Student dbStudent =
+                studentrepository.findByEmail(student.getEmail());
 
-        if (dbStudent != null && dbStudent.getPassword().equals(student.getPassword())) {
-            return "Login successful";
+        if (dbStudent != null &&
+                dbStudent.getPassword().equals(student.getPassword())) {
+
+            return dbStudent;
         }
 
-        return "Invalid credentials";
+        return null;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.test.registration.Student;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 @RestController
@@ -43,7 +44,16 @@ public class StudentController {
         studentService.deleteStudentById(id);
     }
     @PostMapping("/login")
-    public String login( Student student) {
-        return studentService.login(student);
+    public ResponseEntity<?> login(@RequestBody Student student) {
+
+        Student dbStudent = studentService.login(student);
+
+        if (dbStudent != null) {
+            return ResponseEntity.ok(dbStudent);
+        }
+
+        return ResponseEntity
+                .badRequest()
+                .body("Invalid credentials");
     }
 }

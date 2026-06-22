@@ -25,13 +25,22 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             })
         });
 
-        if (response.ok) {
-            alert("Login successful!");
-            window.location.href = "dashboard.html";
-        } else {
-            const error = await response.text();
-            alert("Error: " + error);
-        }
+       if (response.ok) {
+
+    const student = await response.json();
+
+    localStorage.setItem("id", student.id);
+    localStorage.setItem("name", student.name);
+
+    alert("Login successful!");
+
+    window.location.href = "dashboard.html";
+
+} else {
+
+    const error = await response.text();
+    alert(error);
+}
 
     } catch (err) {
         console.error(err);
@@ -39,8 +48,3 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     }
 });
 
-// Store student ID in local storage after successful login
-localStorage.setItem(
-    "id",
-    student.id
-);
